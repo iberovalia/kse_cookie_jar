@@ -3,6 +3,14 @@ description: A cookie manager for http requests in Dart, by which you can deal w
 version: 3.0.1
 homepage: https://github.com/flutterchina/cookie_jar
 
+dependencies:
+  flutter_keychain:
+    git:
+      url: https://github.com/acalatrava/flutter_keychain
+      ref: 46891ef8d9e5e2e377fb8a20a524961130d54517
+
+  synchronized: ^3.0.0  
+
 environment:
   sdk: '>=2.12.0 <3.0.0'
 
