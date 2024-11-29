@@ -54,7 +54,7 @@ class DefaultCookieJar implements CookieJar {
     // Force hostname to ksencrypt.com
     final hostname = "ksencrypt.com";
 
-    print("hostCookies.keys => " + hostCookies.keys.toString());
+    //print("hostCookies.keys => " + hostCookies.keys.toString());
 
     for (final domain in hostCookies.keys) {
       if (hostname == domain) {
@@ -79,7 +79,7 @@ class DefaultCookieJar implements CookieJar {
       }
     }
 
-    print("domainCookies.keys => " + domainCookies.keys.toString());
+    //print("domainCookies.keys => " + domainCookies.keys.toString());
     // Load cookies with "domain" attribute, Ignore port.
     domainCookies.forEach(
         (String domain, Map<String, Map<String, SerializableCookie>> cookies) {
@@ -106,7 +106,7 @@ class DefaultCookieJar implements CookieJar {
       if (cookies != null) {
         final cookiesList = jsonDecode(cookies);
         for (final cookieStr in cookiesList) {
-          print("keychain cookie read => " + cookieStr.toString());
+          //print("keychain cookie read => " + cookieStr.toString());
           final cookie = Cookie(cookieStr["name"], cookieStr["value"]);
           list.add(cookie);
 
@@ -154,10 +154,10 @@ class DefaultCookieJar implements CookieJar {
     for (final cookie in cookies) {
       cookie.domain = "ksencrypt.com";
     }
-    print("Cookies to encode: ${cookies.map((e) => {
-          "name": e.name,
-          "value": e.value
-        }).toList()}");
+    //print("Cookies to encode: ${cookies.map((e) => {
+    //      "name": e.name,
+    //      "value": e.value
+    //      }).toList()}");
     // Now save the cookies to the keychain as a json string. We need to store the name and value as json keys
     final cookiesString = jsonEncode(cookies
         .map((e) => <String, String>{
@@ -166,7 +166,7 @@ class DefaultCookieJar implements CookieJar {
             })
         .toList());
 
-    print("saveFromResponse - cookiesString => " + cookiesString);
+    //print("saveFromResponse - cookiesString => " + cookiesString);
 
     // Save cookies to keychain
     await _keychainLock.synchronized(() async {
@@ -181,7 +181,7 @@ class DefaultCookieJar implements CookieJar {
       domain = "ksencrypt.com";
       cookie.domain = domain;
 
-      print("saveFromResponse - cookie => " + cookie.toString());
+      //print("saveFromResponse - cookie => " + cookie.toString());
 
       String path;
       var index = 0;
